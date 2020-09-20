@@ -3,7 +3,7 @@
 //という行で構成されたCSVファイルをダウンロードする
 (function () {
 	var $queue=document.getElementById("queue");
-	var outputCSV='"URL","タイトル","再生時間","再生時間(秒)"\n';
+	var outputCSV='"URL","タイトル","再生時間","再生時間(秒)","Addした人"\n';
 	for(var $currentElement=$queue.firstElementChild;$currentElement!=null;$currentElement=$currentElement.nextElementSibling){
 		
 		var $qe_title=$currentElement.getElementsByClassName("qe_title")[0];
@@ -22,7 +22,10 @@
 		
 		//↑、秒数に変換したものをCSVに追加
 		outputCSV+='"'+hhmmss+'",';
-		outputCSV+='"'+hhmmssToSeconds(hhmmss)+'"';
+		outputCSV+='"'+hhmmssToSeconds(hhmmss)+'",';
+		
+		//Addした人の名前を追加
+		outputCSV+='"'+$currentElement.title.substring(10)+'"';
 		
 		//改行を追加
 		outputCSV+='\n';
