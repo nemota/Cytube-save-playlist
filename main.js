@@ -12,7 +12,7 @@
 		
 		//タイトルをCSVに追加
 		//ダブルクオーテーションが含まれていたら二重化
-		outputCSV+='"'+$qe_title.innerText.replace('"','""')+'",';
+		outputCSV+='"'+$qe_title.innerText.replace(/"/g,'""')+'",';
 		
 		//hh:mm:ss形式の再生時間
 		var hhmmss=$currentElement.getElementsByClassName("qe_time")[0].innerText;
